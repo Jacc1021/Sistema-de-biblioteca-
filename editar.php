@@ -13,6 +13,9 @@ if (isset($_POST['editar'])) {
     $portada = mysqli_real_escape_string($conexion, $_POST['portada']);
 
     // Actualizar el registro en la BD
+
+    $queryImagen = "UPDATE listado SET portada = null WHERE clave = '$clave'";
+    mysqli_query($conexion, $queryImagen);
     $queryEditar = "UPDATE listado SET nombre='$nombre', autor='$autor', fecha_publicacion='$fechaP', editorial='$editorial', portada='$portada' WHERE clave='$clave'";
     if (mysqli_query($conexion, $queryEditar)) {
         echo '<div class="alert alert-success mt-3" role="alert">';
